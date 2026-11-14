@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AI Film Award 2027 — $1,000,000 — 1B AI Film Studio Calculator">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#00E676"/>
+      <stop offset="1" stop-color="#00D2FF"/>
+    </linearGradient>
+    <linearGradient id="gx" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00E676"/>
+      <stop offset="1" stop-color="#00D2FF"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0D0F12"/>
+      <stop offset="1" stop-color="#11171F"/>
+    </linearGradient>
+    <linearGradient id="ebg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161C25"/>
+      <stop offset="1" stop-color="#0D0F12"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00E676" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#00E676" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00D2FF" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#00D2FF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#FFFFFF" stroke-opacity=".035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="1020" cy="80" r="420" fill="url(#glow1)"/>
+  <circle cx="160" cy="620" r="420" fill="url(#glow2)"/>
+
+  <!-- Emblem -->
+  <g transform="translate(64 48) scale(0.23)">
+    <rect width="512" height="512" rx="112" fill="url(#ebg)"/>
+    <rect x="14" y="14" width="484" height="484" rx="100" fill="none" stroke="url(#g)" stroke-opacity=".5" stroke-width="5"/>
+    <polygon points="84,262 188,110 256,204 326,92 428,262" fill="url(#g)"/>
+    <polygon points="188,110 256,204 214,262 84,262" fill="#000" fill-opacity=".18"/>
+    <polygon points="326,92 428,262 342,262" fill="#fff" fill-opacity=".16"/>
+    <text x="256" y="430" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="176" letter-spacing="-6" fill="#F8FAFC">1B</text>
+  </g>
+  <text x="204" y="84" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="21" letter-spacing="2" fill="#C5CEDA">1 BILLION FOLLOWERS SUMMIT</text>
+  <text x="204" y="118" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" letter-spacing="2" fill="#00D2FF">DUBAI · UAE · 8–10 JANUARY 2027</text>
+
+  <!-- Headline -->
+  <text x="64" y="240" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="58" fill="#F8FAFC">AI FILM AWARD 2027</text>
+  <text x="64" y="366" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="118" fill="url(#gx)">$1,000,000</text>
+  <text x="68" y="418" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" letter-spacing="1.5" fill="#A6B0BE">THE WORLD'S LARGEST FILM AWARD</text>
+  <text x="68" y="456" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="26" letter-spacing="1.5" fill="#00E676">1 FILM. 1 STORY. 1 WINNER.</text>
+
+  <!-- Partner badges -->
+  <rect x="64" y="496" width="292" height="56" rx="28" fill="#161A20" stroke="#2A313B" stroke-width="2"/>
+  <g transform="translate(86 509)">
+    <polygon points="15,0 29,8 29,23 15,31 1,23 1,8" fill="none" stroke="#3B82F6" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="15,9 22,13 22,19 15,23 8,19 8,13" fill="#3B82F6"/>
+  </g>
+  <text x="128" y="532" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="22" fill="#F8FAFC">BytePlus | Seedance</text>
+
+  <rect x="372" y="496" width="170" height="56" rx="28" fill="#161A20" stroke="#2A313B" stroke-width="2"/>
+  <g transform="translate(394 508)" fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 3v20a7 7 0 1 1-7-7" stroke="#25F4EE" transform="translate(-1.5 -1)"/>
+    <path d="M19 3v20a7 7 0 1 1-7-7" stroke="#FE2C55" transform="translate(1.5 1)"/>
+    <path d="M19 3v20a7 7 0 1 1-7-7" stroke="#F8FAFC"/>
+    <path d="M19 3c.6 4.4 3.6 7.4 8 8" stroke="#F8FAFC"/>
+  </g>
+  <text x="436" y="532" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="22" fill="#F8FAFC">TikTok</text>
+
+  <text x="64" y="598" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="18" fill="#A6B0BE">#1MillionStories · $100,000 companion track</text>
+
+  <!-- Calculator preview cards -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="780" y="48" width="372" height="164" rx="18" fill="#161A20" stroke="#2A313B" stroke-width="2"/>
+    <text x="804" y="86" font-size="18" font-weight="700" fill="#A6B0BE">SEEDANCE COST ESTIMATOR</text>
+    <text x="804" y="146" font-size="52" font-weight="800" fill="#F8FAFC">$331</text>
+    <text x="940" y="144" font-size="17" fill="#A6B0BE">draft + hero + keyframes</text>
+    <rect x="804" y="166" width="324" height="16" rx="8" fill="#232A33"/>
+    <rect x="804" y="166" width="50" height="16" rx="8" fill="#00D2FF"/>
+    <rect x="856" y="166" width="272" height="16" rx="8" fill="#00E676"/>
+
+    <rect x="780" y="232" width="372" height="164" rx="18" fill="#161A20" stroke="#2A313B" stroke-width="2"/>
+    <text x="804" y="270" font-size="18" font-weight="700" fill="#A6B0BE">70% SEEDANCE RULE</text>
+    <text x="804" y="330" font-size="52" font-weight="800" fill="#00E676">75.0%</text>
+    <rect x="1020" y="300" width="108" height="34" rx="17" fill="#00E676"/>
+    <text x="1074" y="324" text-anchor="middle" font-size="18" font-weight="800" fill="#04140A">PASS</text>
+    <rect x="804" y="350" width="324" height="16" rx="8" fill="#232A33"/>
+    <rect x="804" y="350" width="243" height="16" rx="8" fill="url(#gx)"/>
+    <rect x="1021" y="344" width="3" height="28" fill="#F8FAFC"/>
+
+    <rect x="780" y="416" width="372" height="164" rx="18" fill="#161A20" stroke="#2A313B" stroke-width="2"/>
+    <text x="804" y="454" font-size="18" font-weight="700" fill="#A6B0BE">5–7 MIN TIMELINE</text>
+    <text x="804" y="514" font-size="52" font-weight="800" fill="#F8FAFC">6:00</text>
+    <text x="930" y="512" font-size="17" fill="#A6B0BE">of 7:00 maximum</text>
+    <rect x="804" y="534" width="324" height="16" rx="8" fill="#232A33"/>
+    <rect x="804" y="534" width="208" height="16" rx="8" fill="#00E676"/>
+    <rect x="1012" y="534" width="54" height="16" fill="#00D2FF"/>
+    <rect x="1066" y="534" width="14" height="16" rx="0" fill="#A78BFA"/>
+  </g>
+  <text x="1152" y="610" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#6F7B8A">1B AI Film Studio Calculator</text>
+</svg>

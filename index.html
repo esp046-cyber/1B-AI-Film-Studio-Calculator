@@ -1,543 +1,528 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>1B AI Film Studio Calculator — Seedance Cost &amp; 70% Rule Planner</title>
-  <meta name="description" content="Plan your 1 Billion Followers Summit 2027 AI Film Award entry before you generate: Seedance cost forecasting, the 70% Seedance rule, 5–7 minute runtime validation and a visual calculator builder. Works offline.">
+  <title>1B AI Film Studio Calculator — AI Film Award 2027</title>
+  <meta name="description" content="Build and run pre-production calculators for the 1 Billion Followers Summit 2027 AI Film Award: Seedance cost forecasting, the 70% Seedance rule, 5–7 minute runtime validation and a competition glossary. Works offline.">
   <meta name="theme-color" content="#0D0F12">
   <meta name="color-scheme" content="dark light">
-  <meta name="application-name" content="1B AI Calc">
+  <meta name="application-name" content="1B Calculator">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="1B AI Film Studio Calculator">
-  <meta property="og:title" content="1B AI Film Studio Calculator — Plan your $1,000,000 AI Film Award entry">
-  <meta property="og:description" content="Visual calculators for Seedance generation cost, the 70% Seedance rule and the 5–7 minute runtime window. Unofficial planning tool for the 1 Billion Followers Summit 2027 AI Film Award.">
-  <meta property="og:url" content="https://1billion-ai-calculator.example/">
-  <meta property="og:image" content="https://1billion-ai-calculator.example/icons/og-image.png">
+  <meta property="og:title" content="1B AI Film Studio Calculator — AI Film Award 2027">
+  <meta property="og:description" content="Plan your $1,000,000 AI Film Award entry before you generate: Seedance cost forecasts, 70% rule and 5–7 minute runtime checks, visual calculators and a glossary.">
+  <meta property="og:url" content="./index.html">
+  <meta property="og:image" content="icons/og-image.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="1B AI Film Studio Calculator banner with the 1B emblem, AI Film Award 2027 and calculator preview cards">
-  <meta property="og:image" content="https://1billion-ai-calculator.example/icons/og-image.svg">
+  <meta property="og:image:alt" content="AI Film Award 2027 — $1,000,000 — 1B AI Film Studio Calculator preview cards">
+  <meta property="og:image" content="icons/og-image.svg">
   <meta property="og:image:type" content="image/svg+xml">
   <meta property="og:locale" content="en_US">
-
-  <!-- Twitter -->
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="1B AI Film Studio Calculator">
-  <meta name="twitter:description" content="Budget Seedance, validate the 70% rule and the 5–7 minute runtime before you generate.">
-  <meta name="twitter:image" content="https://1billion-ai-calculator.example/icons/og-image.png">
-  <meta name="twitter:image:alt" content="1B AI Film Studio Calculator banner">
+  <meta name="twitter:title" content="1B AI Film Studio Calculator — AI Film Award 2027">
+  <meta name="twitter:description" content="Seedance cost forecasts, 70% rule and 5–7 minute runtime checks for the $1,000,000 AI Film Award.">
+  <meta name="twitter:image" content="icons/og-image.png">
+  <meta name="twitter:image:alt" content="AI Film Award 2027 — $1,000,000 — 1B AI Film Studio Calculator preview cards">
 
   <!-- iOS / Apple PWA -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="1B AI Calc">
+  <meta name="apple-mobile-web-app-title" content="1B Calculator">
+  <meta name="format-detection" content="telephone=no">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
+  <!-- Manifest and icons -->
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* Apply saved or system theme before first paint to avoid a flash. */
+    (function () {
+      try {
+        var t = localStorage.getItem('1b-theme');
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
-<!-- ===================== SVG SPRITE SHEET ===================== -->
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<!-- ========== SVG sprite: logos & icons ========== -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
   <defs>
-    <linearGradient id="gPeak" x1="0" y1="1" x2="1" y2="0">
+    <linearGradient id="gEmCy" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0" stop-color="#00E676"/>
       <stop offset="1" stop-color="#00D2FF"/>
     </linearGradient>
-
-    <!-- 1 Billion Followers Summit — Dubai, UAE emblem: emerald-to-cyan geometric peaks -->
-    <symbol id="logo-1b" viewBox="0 0 48 48">
-      <rect x="1" y="1" width="46" height="46" rx="11" fill="#0D0F12" stroke="#00E676" stroke-width="1.5"/>
-      <path d="M6 31 L17 11 L24 23 L30 15 L42 31 Z" fill="url(#gPeak)"/>
-      <path d="M17 11 L24 23 L17 23 Z" fill="#0D0F12" opacity=".25"/>
-      <text x="24" y="43" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="800" fill="#F8FAFC" text-anchor="middle">1B</text>
-    </symbol>
-
-    <!-- AI FILM AWARD wordmark -->
-    <symbol id="logo-ai-film-award" viewBox="0 0 180 40">
-      <text x="0" y="17" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="800" letter-spacing="1.5" fill="currentColor">AI FILM AWARD</text>
-      <rect x="0" y="24" width="64" height="3" rx="1.5" fill="url(#gPeak)"/>
-      <text x="0" y="38" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="600" fill="currentColor" opacity=".8">2nd Edition · 2027</text>
-    </symbol>
-
-    <!-- BytePlus | Seedance (stylised) -->
-    <symbol id="logo-byteplus-seedance" viewBox="0 0 190 40">
-      <rect x=".75" y=".75" width="188.5" height="38.5" rx="19.25" fill="none" stroke="#00E676" stroke-width="1.5"/>
-      <path d="M12 26 L19 12 L24 21 L28 16 L35 26 Z" fill="url(#gPeak)"/>
-      <text x="44" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">BytePlus <tspan fill="#00E676">|</tspan> Seedance</text>
-    </symbol>
-
-    <!-- TikTok (stylised mark + wordmark) -->
-    <symbol id="logo-tiktok" viewBox="0 0 120 40">
-      <rect x=".75" y=".75" width="118.5" height="38.5" rx="19.25" fill="none" stroke="#25F4EE" stroke-width="1.5"/>
-      <path d="M24 10 v13 a4.5 4.5 0 1 1 -3.5 -4.4" fill="none" stroke="#FE2C55" stroke-width="3.2" stroke-linecap="round" transform="translate(1.2 1)"/>
-      <path d="M24 10 v13 a4.5 4.5 0 1 1 -3.5 -4.4 M24 10 c.4 3.2 2.6 5 5.5 5.2" fill="none" stroke="#25F4EE" stroke-width="3.2" stroke-linecap="round"/>
-      <text x="40" y="25" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="800" fill="currentColor">TikTok</text>
-    </symbol>
-
-    <!-- Strategic partner badges (stylised wordmark badges, tinted via CSS color) -->
-    <symbol id="p-tiktok" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><circle cx="20" cy="20" r="8" fill="currentColor"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">TikTok</text></symbol>
-    <symbol id="p-meta" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M10 24 c0-8 5-12 8-6 s6 6 8-2 c-3-4-8-4-10 2" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" transform="translate(0 1)"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">Meta</text></symbol>
-    <symbol id="p-youtube" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><rect x="10" y="12" width="20" height="15" rx="4" fill="currentColor"/><path d="M18 16 L24 19.5 L18 23 Z" fill="#0D0F12"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">YouTube</text></symbol>
-    <symbol id="p-instagram" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><rect x="11" y="11" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">Instagram</text></symbol>
-    <symbol id="p-gemini" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M20 10 C21 16 24 19 30 20 C24 21 21 24 20 30 C19 24 16 21 10 20 C16 19 19 16 20 10 Z" fill="currentColor"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">Gemini</text></symbol>
-    <symbol id="p-tiktok-live" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><circle cx="20" cy="20" r="8" fill="currentColor"/><circle cx="20" cy="20" r="3" fill="#0D0F12"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">TikTok LIVE</text></symbol>
-    <symbol id="p-linkedin" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><rect x="10" y="10" width="20" height="20" rx="4" fill="currentColor"/><text x="20" y="25.5" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="800" fill="#0D0F12" text-anchor="middle">in</text><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">LinkedIn</text></symbol>
-    <symbol id="p-bilibili" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><rect x="10" y="13" width="20" height="14" rx="4" fill="currentColor"/><path d="M14 9 L17 13 M26 9 L23 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">Bilibili</text></symbol>
-    <symbol id="p-snapchat" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M20 10 c4 0 6 3 6 7 v3 l3 3 h-4 c-1 2-3 3-5 3 s-4-1-5-3 h-4 l3-3 v-3 c0-4 2-7 6-7 Z" fill="currentColor"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">Snapchat</text></symbol>
-    <symbol id="p-byteplus-seedance" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M10 28 L17 12 L22 21 L26 16 L32 28 Z" fill="currentColor"/><text x="38" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">BytePlus</text><text x="38" y="31" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">Seedance</text></symbol>
-    <symbol id="p-x" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M11 11 L29 29 M29 11 L11 29" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">X</text></symbol>
-
-    <symbol id="p-emirates" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M10 26 Q20 10 30 26 Q20 20 10 26 Z" fill="currentColor"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">Emirates</text></symbol>
-    <symbol id="p-dubai-chamber-digital" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><rect x="11" y="11" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15 25 V19 M20 25 V15 M25 25 V21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><text x="38" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">Dubai Chamber</text><text x="38" y="31" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">Digital</text></symbol>
-    <symbol id="p-difc" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M20 9 L30 20 L20 31 L10 20 Z" fill="currentColor"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">DIFC</text></symbol>
-    <symbol id="p-e-and" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><circle cx="20" cy="20" r="9" fill="none" stroke="currentColor" stroke-width="2.6"/><text x="20" y="24.5" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="800" fill="currentColor" text-anchor="middle">e&amp;</text><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">e&amp;</text></symbol>
-    <symbol id="p-dubai-silicon-oasis" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><rect x="11" y="11" width="18" height="18" rx="3" fill="currentColor"/><path d="M15 15 h10 v10 h-10 Z" fill="#0D0F12"/><text x="38" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">Dubai Silicon</text><text x="38" y="31" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">Oasis</text></symbol>
-    <symbol id="p-museum-of-the-future" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><ellipse cx="20" cy="20" rx="10" ry="8" fill="none" stroke="currentColor" stroke-width="2.6"/><ellipse cx="20" cy="20" rx="3.4" ry="4.4" fill="currentColor"/><text x="38" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">Museum of</text><text x="38" y="31" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="800" fill="currentColor">the Future</text></symbol>
-    <symbol id="p-rta" viewBox="0 0 168 40"><rect x=".75" y=".75" width="166.5" height="38.5" rx="19.25" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><path d="M10 28 L16 12 H24 L30 28 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><text x="38" y="25" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="currentColor">RTA</text></symbol>
-
-    <!-- UI icons (24px grid, stroke-based) -->
-    <symbol id="i-builder" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8.5" y="14" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6.5 10 v2 h11 v-2 M12 12 v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-cost" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 8 v8 M14.5 9.5 c-.6-.8-1.5-1.1-2.5-1.1 c-1.4 0-2.4.7-2.4 1.8 c0 2.6 5 1.2 5 3.8 c0 1.1-1.1 1.8-2.6 1.8 c-1.1 0-2-.4-2.6-1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 12.5 l3 3 l6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5 a2 2 0 0 1 2-2 h13 v16 H6 a2 2 0 0 0-2 2 Z M4 19 V5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 7 h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4 18 l5-5 l4 4 l3-3 l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2 v3 M12 19 v3 M2 12 h3 M19 12 h3 M4.9 4.9 l2.1 2.1 M17 17 l2.1 2.1 M4.9 19.1 L7 17 M17 7 l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5 A8 8 0 0 1 9.5 4 A8.5 8.5 0 1 0 20 14.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3 v12 M7 10.5 l5 5 l5-5 M4 20 h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-up" viewBox="0 0 24 24"><path d="M6 15 l6-6 l6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9 l6 6 l6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7 h16 M9 7 V4 h6 v3 M6 7 l1 13 h10 l1-13 M10 11 v6 M14 11 v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8 V6 a2 2 0 0 0-2-2 H6 a2 2 0 0 0-2 2 v8 a2 2 0 0 0 2 2 h2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-    <symbol id="i-install" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7 v7 M9 11.5 l3 3 l3-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15 V3 M8 7 l4-4 l4 4 M6 11 H5 a1 1 0 0 0-1 1 v8 a1 1 0 0 0 1 1 h14 a1 1 0 0 0 1-1 v-8 a1 1 0 0 0-1-1 h-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <linearGradient id="gEmCyX" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00E676"/>
+      <stop offset="1" stop-color="#00D2FF"/>
+    </linearGradient>
+    <linearGradient id="gBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161C25"/>
+      <stop offset="1" stop-color="#0D0F12"/>
+    </linearGradient>
   </defs>
+
+  <!-- 1 Billion Followers Summit — Dubai emblem -->
+  <symbol id="logo-1b" viewBox="0 0 64 64">
+    <rect width="64" height="64" rx="14" fill="url(#gBg)"/>
+    <rect x="1.75" y="1.75" width="60.5" height="60.5" rx="12.5" fill="none" stroke="url(#gEmCy)" stroke-opacity=".5" stroke-width=".8"/>
+    <polygon points="10.5,32.7 23.5,13.7 32,25.5 40.8,11.5 53.5,32.7" fill="url(#gEmCy)"/>
+    <polygon points="23.5,13.7 32,25.5 26.8,32.7 10.5,32.7" fill="#000" fill-opacity=".18"/>
+    <polygon points="40.8,11.5 53.5,32.7 42.8,32.7" fill="#fff" fill-opacity=".16"/>
+    <text x="32" y="54" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="22" letter-spacing="-.8" fill="#F8FAFC">1B</text>
+  </symbol>
+
+  <!-- AI FILM AWARD wordmark -->
+  <symbol id="logo-award" viewBox="0 0 190 28">
+    <text x="0" y="21" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="21" letter-spacing="2.2" fill="url(#gEmCyX)">AI FILM AWARD</text>
+  </symbol>
+
+  <!-- BytePlus | Seedance -->
+  <symbol id="logo-byteplus" viewBox="0 0 176 32">
+    <polygon points="14,2 26,9 26,23 14,30 2,23 2,9" fill="none" stroke="#3B82F6" stroke-width="2.6" stroke-linejoin="round"/>
+    <polygon points="14,10 20,13.5 20,19.5 14,23 8,19.5 8,13.5" fill="#3B82F6"/>
+    <text x="36" y="22" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="16" fill="currentColor">BytePlus | Seedance</text>
+  </symbol>
+
+  <!-- TikTok -->
+  <symbol id="logo-tiktok" viewBox="0 0 76 26">
+    <g transform="translate(1 1) scale(.62)" fill="none" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 3v20a7 7 0 1 1-7-7" stroke="#25F4EE" transform="translate(-1.6 -1)"/>
+      <path d="M19 3v20a7 7 0 1 1-7-7" stroke="#FE2C55" transform="translate(1.6 1)"/>
+      <path d="M19 3v20a7 7 0 1 1-7-7" stroke="currentColor"/>
+      <path d="M19 3c.6 4.4 3.6 7.4 8 8" stroke="currentColor"/>
+    </g>
+    <text x="24" y="19" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="16" fill="currentColor">TikTok</text>
+  </symbol>
+
+  <!-- Strategic partner badges (single-colour, tinted via CSS `color`) -->
+  <symbol id="p-tiktok" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="currentColor">TikTok</text></symbol>
+  <symbol id="p-meta" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><path d="M34 29c-3 0-4-3-4-7s2-7 4-7c3 0 6 8 8 12 2 3 4 3 6 3M34 29c2 0 3-1 5-4m0 0c-1-3-3-10-6-10M48 29c4 0 6-4 6-7s-2-7-5-7c-3 0-5 5-7 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-4 -1)"/><text x="88" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="currentColor">Meta</text></symbol>
+  <symbol id="p-youtube" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><rect x="16" y="12" width="26" height="19" rx="6" fill="currentColor"/><polygon points="26,17 26,26 34,21.5" fill="#0D0F12"/><text x="92" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="currentColor">YouTube</text></symbol>
+  <symbol id="p-instagram" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><rect x="14" y="11" width="22" height="22" rx="7" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="25" cy="22" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="31.2" cy="15.8" r="1.4" fill="currentColor"/><text x="88" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="14" fill="currentColor">Instagram</text></symbol>
+  <symbol id="p-gemini" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><path d="M26 10c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="currentColor"/><text x="88" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="currentColor">Gemini</text></symbol>
+  <symbol id="p-tiktoklive" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="19" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="13" fill="currentColor">TikTok</text><text x="70" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="13" letter-spacing="3" fill="currentColor">LIVE</text></symbol>
+  <symbol id="p-linkedin" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><rect x="14" y="11" width="22" height="22" rx="4" fill="currentColor"/><text x="25" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="#0D0F12">in</text><text x="88" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="currentColor">LinkedIn</text></symbol>
+  <symbol id="p-bilibili" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="currentColor">Bilibili</text></symbol>
+  <symbol id="p-snapchat" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" fill="currentColor">Snapchat</text></symbol>
+  <symbol id="p-byteplus" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="19" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="13" fill="currentColor">BytePlus</text><text x="70" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="13" fill="currentColor">Seedance</text></symbol>
+  <symbol id="p-x" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><path d="M58 12l24 20M82 12L58 32" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></symbol>
+
+  <symbol id="p-emirates" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="700" font-size="17" fill="currentColor">Emirates</text></symbol>
+  <symbol id="p-dcd" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="19" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="12" fill="currentColor">Dubai Chamber</text><text x="70" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="12" letter-spacing="2" fill="currentColor">DIGITAL</text></symbol>
+  <symbol id="p-difc" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="19" letter-spacing="3" fill="currentColor">DIFC</text></symbol>
+  <symbol id="p-eand" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="30" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="22" fill="currentColor">e&amp;</text></symbol>
+  <symbol id="p-dso" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="19" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="12" fill="currentColor">Dubai Silicon</text><text x="70" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="12" letter-spacing="2" fill="currentColor">OASIS</text></symbol>
+  <symbol id="p-motf" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="19" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="12" fill="currentColor">Museum of</text><text x="70" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="12" fill="currentColor">the Future</text></symbol>
+  <symbol id="p-rta" viewBox="0 0 140 44"><rect x="1" y="1" width="138" height="42" rx="10" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.5"/><text x="70" y="29" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="19" letter-spacing="3" fill="currentColor">RTA</text></symbol>
+
+  <!-- UI icons (stroke, 24px grid) -->
+  <symbol id="i-blocks" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7M17.5 14v7"/></symbol>
+  <symbol id="i-cost" viewBox="0 0 24 24"><path d="M12 2v20M17 6.5H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 4v16"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+  <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></symbol>
+  <symbol id="i-install" viewBox="0 0 24 24"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+  <symbol id="i-grip" viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.2"/><circle cx="15" cy="6" r="1.2"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><circle cx="9" cy="18" r="1.2"/><circle cx="15" cy="18" r="1.2"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3m0 0L8 7m4-4 4 4M5 12v8h14v-8"/></symbol>
 </svg>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ===================== UPDATE BANNER ===================== -->
-<div id="updateBanner" class="update-banner" role="status" aria-live="polite" hidden>
-  <span>A new version is ready.</span>
-  <button type="button" id="updateBtn" class="btn btn--primary btn--sm">Refresh now</button>
-  <button type="button" id="updateDismiss" class="btn btn--ghost btn--sm" aria-label="Dismiss update notice">Later</button>
-</div>
+<div class="app">
 
-<!-- ===================== HEADER ===================== -->
-<header class="app-header" role="banner">
-  <div class="app-header__inner">
-    <a class="lockup" href="./index.html" aria-label="1B AI Film Studio Calculator — home">
-      <svg class="lockup__emblem" viewBox="0 0 48 48" role="img" aria-label="1 Billion Followers Summit emblem"><use href="#logo-1b"/></svg>
-      <span class="lockup__text">
-        <svg class="lockup__award" viewBox="0 0 180 40" role="img" aria-label="AI Film Award, 2nd Edition 2027"><use href="#logo-ai-film-award"/></svg>
-        <span class="lockup__by">By 1 Billion Summit &amp; BytePlus | Seedance</span>
+  <!-- ========== Header ========== -->
+  <header class="app-header" id="appHeader">
+    <a class="lockup" href="./index.html" aria-label="1B AI Film Award — Studio Calculator home">
+      <svg class="lk-emblem" viewBox="0 0 64 64" role="img" aria-label="1 Billion Followers Summit Dubai emblem"><use href="#logo-1b"/></svg>
+      <span class="lk-text">
+        <strong>AI FILM AWARD</strong>
+        <small>By 1 Billion Summit &amp; BytePlus | Seedance</small>
       </span>
-      <svg class="lockup__tiktok" viewBox="0 0 120 40" role="img" aria-label="TikTok"><use href="#logo-tiktok"/></svg>
+      <svg class="lk-tiktok" viewBox="0 0 76 26" role="img" aria-label="TikTok" style="color:var(--text)"><use href="#logo-tiktok"/></svg>
     </a>
-    <div class="app-header__actions">
-      <span id="netPill" class="net-pill" role="status" aria-live="polite"><span class="net-pill__dot" aria-hidden="true"></span><span id="netText">Online</span></span>
-      <button type="button" id="installBtn" class="btn btn--primary btn--sm" hidden><svg class="icon" aria-hidden="true"><use href="#i-install"/></svg><span>Install</span></button>
-      <button type="button" id="themeBtn" class="btn btn--icon" aria-label="Switch to light theme" aria-pressed="false"><svg class="icon" aria-hidden="true"><use id="themeIcon" href="#i-sun"/></svg></button>
+    <div class="header-actions">
+      <span id="netPill" class="pill" role="status" aria-live="polite" title="Connection status">
+        <span class="dot" aria-hidden="true"></span><span class="pill-text" id="netText">Online</span><span class="sr-only" id="netSr"> — connection status</span>
+      </span>
+      <button type="button" class="btn icon-btn" id="installBtn" hidden aria-label="Install app" title="Install app"><svg class="icon" aria-hidden="true"><use href="#i-install"/></svg></button>
+      <button type="button" class="btn icon-btn" id="partnersBtn" aria-haspopup="dialog" aria-label="Show strategic partners" title="Strategic partners"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></button>
+      <button type="button" class="btn icon-btn" id="themeBtn" aria-label="Switch to light theme" title="Toggle theme"><svg class="icon" aria-hidden="true"><use href="#i-theme"/></svg></button>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- ===================== PRIMARY NAV ===================== -->
-<nav class="tabbar" aria-label="Primary">
-  <div class="tabbar__inner" role="tablist" aria-label="Calculator sections">
-    <button type="button" class="tab" role="tab" id="tab-builder" data-tab="builder" aria-controls="panel-builder" aria-selected="true" aria-label="Visual Calculator Studio"><svg class="icon" aria-hidden="true"><use href="#i-builder"/></svg><span>Build</span></button>
-    <button type="button" class="tab" role="tab" id="tab-seedance" data-tab="seedance" aria-controls="panel-seedance" aria-selected="false" tabindex="-1" aria-label="Seedance Cost and Iteration Calculator"><svg class="icon" aria-hidden="true"><use href="#i-cost"/></svg><span>Cost</span></button>
-    <button type="button" class="tab" role="tab" id="tab-compliance" data-tab="compliance" aria-controls="panel-compliance" aria-selected="false" tabindex="-1" aria-label="70 percent compliance and timeline validator"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>70% Rule</span></button>
-    <button type="button" class="tab" role="tab" id="tab-glossary" data-tab="glossary" aria-controls="panel-glossary" aria-selected="false" tabindex="-1" aria-label="Definition of Terms"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>Terms</span></button>
-    <button type="button" class="tab" role="tab" id="tab-assets" data-tab="assets" aria-controls="panel-assets" aria-selected="false" tabindex="-1" aria-label="PWA asset and PNG icon pack generator"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Assets</span></button>
-  </div>
-</nav>
-
-<!-- ===================== MAIN ===================== -->
-<main id="main" class="app-main" tabindex="-1">
-
-  <div id="installBanner" class="install-banner" hidden>
-    <div>
-      <strong>Install this app</strong>
-      <p>Add it to your home screen for full-screen, offline use.</p>
-    </div>
-    <div class="install-banner__actions">
-      <button type="button" id="installBannerBtn" class="btn btn--primary btn--sm">Install</button>
-      <button type="button" id="installBannerDismiss" class="btn btn--ghost btn--sm">Not now</button>
-    </div>
+  <!-- ========== Update banner ========== -->
+  <div class="banner update" id="updateBar" role="alert" hidden>
+    <p><strong>New version ready.</strong> Refresh to get the latest calculator updates.</p>
+    <button type="button" class="btn primary small" id="updateBtn">Refresh</button>
+    <button type="button" class="btn ghost small" id="updateLater">Later</button>
   </div>
 
-  <div id="boot" class="boot" aria-hidden="true">
-    <div class="skeleton skeleton--title"></div>
-    <div class="skeleton skeleton--card"></div>
-    <div class="skeleton skeleton--card"></div>
-  </div>
-  <noscript><p class="card">This calculator needs JavaScript enabled to run.</p></noscript>
+  <!-- ========== Tabs ========== -->
+  <nav class="tabbar" id="tabbar" role="tablist" aria-label="Calculator sections">
+    <button class="tab" role="tab" id="tabbtn-studio" aria-controls="tab-studio" aria-selected="true" data-tab="studio"><svg class="icon" aria-hidden="true"><use href="#i-blocks"/></svg><span>Studio</span></button>
+    <button class="tab" role="tab" id="tabbtn-cost" aria-controls="tab-cost" aria-selected="false" tabindex="-1" data-tab="cost"><svg class="icon" aria-hidden="true"><use href="#i-cost"/></svg><span><span class="long">Seedance </span>Cost</span></button>
+    <button class="tab" role="tab" id="tabbtn-compliance" aria-controls="tab-compliance" aria-selected="false" tabindex="-1" data-tab="compliance"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>70% Rule</span></button>
+    <button class="tab" role="tab" id="tabbtn-glossary" aria-controls="tab-glossary" aria-selected="false" tabindex="-1" data-tab="glossary"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>Glossary</span></button>
+    <button class="tab" role="tab" id="tabbtn-assets" aria-controls="tab-assets" aria-selected="false" tabindex="-1" data-tab="assets"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Assets</span></button>
+  </nav>
 
-  <!-- ============ 1. VISUAL CALCULATOR STUDIO ============ -->
-  <section id="panel-builder" class="panel" role="tabpanel" aria-labelledby="tab-builder" tabindex="-1" hidden>
-    <div class="panel__head">
-      <h1 class="panel__title">Visual Calculator Studio</h1>
-      <p class="panel__sub">Build &amp; run pre-production calculators visually. Add blocks, link them with variables, and watch results update live &mdash; before you spend a single Seedance credit.</p>
-    </div>
+  <main class="main-wrap" id="main" tabindex="-1">
+    <noscript><div class="notice warn">This calculator needs JavaScript. Please enable it to build and run calculators.</div></noscript>
 
-    <section class="card" aria-labelledby="presetsTitle">
-      <h2 id="presetsTitle" class="card__title">1-click preset templates</h2>
-      <div id="presetGrid" class="preset-grid"></div>
-    </section>
-
-    <section class="card" aria-labelledby="studioTitle">
-      <h2 id="studioTitle" class="card__title">Your calculator</h2>
-      <div class="field">
-        <label for="calcName">Calculator name</label>
-        <input id="calcName" type="text" maxlength="80" autocomplete="off">
+    <!-- ===== 1. Visual Calculator Studio ===== -->
+    <section class="panel" id="tab-studio" role="tabpanel" aria-labelledby="tabbtn-studio" tabindex="-1">
+      <div class="panel-head">
+        <span class="eyebrow">Module 1 · Visual Calculator Studio</span>
+        <h1>Build &amp; Run Visually</h1>
+        <p class="lede">Snap together input, model, formula and output blocks to plan an AI film before you generate a single frame. Blocks link by variable name — change any value and every dependent block updates live.</p>
       </div>
-      <div class="btn-row" role="group" aria-label="Add a block">
-        <button type="button" class="btn btn--accent" data-add="input">+ Input</button>
-        <button type="button" class="btn btn--accent" data-add="model">+ Model</button>
-        <button type="button" class="btn btn--accent" data-add="formula">+ Formula</button>
-        <button type="button" class="btn btn--accent" data-add="output">+ Output</button>
-      </div>
-      <div class="palette" aria-label="Variables you can insert into a formula">
-        <span class="palette__label">Variables <small>(tap to insert into the formula you are editing)</small></span>
-        <div id="varPalette" class="chips"></div>
-      </div>
-    </section>
 
-    <div id="canvas" class="canvas" aria-label="Calculator blocks"></div>
+      <section class="card" aria-labelledby="presetsH">
+        <h2 id="presetsH">1-click presets</h2>
+        <div class="preset-grid">
+          <button type="button" class="preset" data-preset="creator"><span class="persona">Video Creator</span><strong>Shot-by-Shot Budgeter</strong><small>Draft-to-1080p final cost for every scene</small></button>
+          <button type="button" class="preset" data-preset="editor"><span class="persona">Film Editor</span><strong>Pacing &amp; Delivery</strong><small>Frames, bitrate, cuts and subtitle sync</small></button>
+          <button type="button" class="preset" data-preset="agent"><span class="persona">AI Agent Developer</span><strong>Orchestration Estimator</strong><small>Prompts, polling, retry loops, tokens &amp; GPU</small></button>
+          <button type="button" class="preset" data-preset="business"><span class="persona">Business / Studio</span><strong>Margin &amp; Award ROI</strong><small>Crew allocation, overhead and $1M expected value</small></button>
+        </div>
+      </section>
 
-    <section class="card" aria-labelledby="saveTitle">
-      <h2 id="saveTitle" class="card__title">Save, export &amp; import</h2>
-      <div class="btn-row">
-        <button type="button" class="btn btn--primary" id="saveCalcBtn">Save locally</button>
-        <button type="button" class="btn" id="exportCalcBtn"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span>Export JSON</span></button>
-        <button type="button" class="btn" id="importCalcBtn">Import JSON</button>
-        <button type="button" class="btn btn--ghost" id="clearCalcBtn">Clear canvas</button>
-        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      <section class="card toolbar" aria-label="Calculator actions">
+        <div class="field">
+          <label for="calcName"><span>Calculator name</span></label>
+          <input id="calcName" type="text" maxlength="60" autocomplete="off" placeholder="My film budget">
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn primary" id="saveCalc">Save</button>
+          <button type="button" class="btn" id="newCalc">New</button>
+          <button type="button" class="btn" id="exportCalc">Export JSON</button>
+          <label class="btn" for="importFile" id="importLabel" tabindex="0" role="button">Import JSON</label>
+          <input type="file" id="importFile" accept="application/json,.json" aria-label="Import calculator JSON">
+        </div>
+      </section>
+
+      <div class="summary" id="summary" aria-live="polite" aria-label="Key results"></div>
+
+      <div class="addbar" role="group" aria-label="Add a block">
+        <span class="lbl">Add block</span>
+        <button type="button" class="btn small" data-add="input">+ Input</button>
+        <button type="button" class="btn small" data-add="model">+ Model</button>
+        <button type="button" class="btn small" data-add="formula">+ Formula</button>
+        <button type="button" class="btn small" data-add="output">+ Output</button>
       </div>
-      <h3 class="card__subtitle">Saved calculators</h3>
-      <ul id="savedList" class="saved-list"></ul>
-    </section>
 
-    <details class="card help">
-      <summary>Formula syntax</summary>
-      <ul>
-        <li>Operators: <code>+ - * / ^</code> and parentheses. Percent suffix: <code>A * 15%</code> = A &times; 0.15.</li>
-        <li>Comparisons return 1 or 0: <code>&lt; &gt; &lt;= &gt;= == !=</code>, combine with <code>&amp;&amp;</code> / <code>||</code>.</li>
-        <li>Functions: <code>if(cond, a, b)</code>, <code>min</code>, <code>max</code>, <code>round</code>, <code>floor</code>, <code>ceil</code>, <code>abs</code>, <code>sqrt</code>, <code>clamp(x, lo, hi)</code>.</li>
-        <li>Example: <code>if(A &gt; 3, A * B, A * B * 1.2)</code>. Inputs set as <strong>%</strong> are stored as fractions (5% = 0.05).</li>
-      </ul>
-    </details>
-  </section>
+      <div class="canvas" id="canvas" aria-label="Calculator canvas"></div>
 
-  <!-- ============ 2. SEEDANCE COST CALCULATOR ============ -->
-  <section id="panel-seedance" class="panel" role="tabpanel" aria-labelledby="tab-seedance" tabindex="-1" hidden>
-    <div class="panel__head">
-      <h1 class="panel__title">Seedance Cost &amp; Iteration Calculator</h1>
-      <p class="panel__sub">Split your spend into drafts, hero shots and Seedream keyframes. See draft waste versus final-cut spend before you render.</p>
-    </div>
+      <section class="card" aria-labelledby="savedH">
+        <h2 id="savedH">Saved calculators</h2>
+        <div class="saved-list" id="savedList"></div>
+      </section>
 
-    <section class="card results" aria-labelledby="sdResTitle" aria-live="polite">
-      <h2 id="sdResTitle" class="card__title">Estimated spend</h2>
-      <div class="stat-row">
-        <div class="stat"><span class="stat__label">Total estimate</span><span class="stat__value stat__value--lg" id="sdTotal">$0.00</span></div>
-        <div class="stat"><span class="stat__label">Burn per final minute</span><span class="stat__value" id="sdBurn">$0.00</span></div>
-        <div class="stat"><span class="stat__label">Draft waste</span><span class="stat__value" id="sdWastePct">0%</span></div>
-      </div>
-      <div id="sdBar" class="stack" role="img" aria-label="Stacked bar of spend by phase"></div>
-      <ul id="sdLegend" class="legend"></ul>
-      <div class="table-wrap">
-        <table class="table">
-          <caption class="sr-only">Cost breakdown by phase</caption>
-          <thead><tr><th scope="col">Line</th><th scope="col" class="num">Billed s / imgs</th><th scope="col" class="num">Rate</th><th scope="col" class="num">Cost</th></tr></thead>
-          <tbody id="sdTable"></tbody>
-        </table>
-      </div>
-      <ul id="sdNotes" class="notes"></ul>
-    </section>
-
-    <section class="card" aria-labelledby="sdFilmTitle">
-      <h2 id="sdFilmTitle" class="card__title">Film target</h2>
-      <div class="grid-2">
-        <div class="field"><label for="sdFinal">Final film length (seconds)</label><input id="sdFinal" type="number" inputmode="decimal" min="60" max="600" step="1" data-bind="seedance.finalSecs"></div>
-        <div class="field"><label for="sdPct">Seedance share of film: <output id="sdPctOut">75%</output></label><input id="sdPct" type="range" min="0" max="100" step="1" data-bind="seedance.seedancePct"></div>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="sdP1Title">
-      <h2 id="sdP1Title" class="card__title"><span class="phase">Phase 1</span> Drafting</h2>
-      <div class="grid-3">
-        <div class="field"><label for="sdDraftModel">Draft model</label><select id="sdDraftModel" data-bind="seedance.draftModel" data-type="string"></select></div>
-        <div class="field"><label for="sdDraftRes">Resolution</label><select id="sdDraftRes" data-bind="seedance.draftRes" data-type="number"></select></div>
-        <div class="field"><label for="sdDraftTakes">Draft takes per kept second</label><input id="sdDraftTakes" type="number" inputmode="decimal" min="0" max="30" step="0.5" data-bind="seedance.draftTakes"></div>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="sdP2Title">
-      <h2 id="sdP2Title" class="card__title"><span class="phase">Phase 2</span> Hero shots</h2>
-      <div class="grid-3">
-        <div class="field"><label for="sdHeroModel">Hero model</label><select id="sdHeroModel" data-bind="seedance.heroModel" data-type="string"></select></div>
-        <div class="field"><label for="sdHeroRes">Resolution</label><select id="sdHeroRes" data-bind="seedance.heroRes" data-type="number"></select></div>
-        <div class="field"><label for="sdHeroTakes">Hero takes per kept second</label><input id="sdHeroTakes" type="number" inputmode="decimal" min="1" max="20" step="0.25" data-bind="seedance.heroTakes"></div>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="sdP3Title">
-      <h2 id="sdP3Title" class="card__title"><span class="phase">Phase 3</span> Seedream keyframes</h2>
-      <div class="grid-3">
-        <div class="field"><label for="sdKeyframes">Keyframes / storyboards / sheets</label><input id="sdKeyframes" type="number" inputmode="numeric" min="0" max="2000" step="1" data-bind="seedance.keyframes"></div>
-        <div class="field"><label for="sdKeyIter">Generations per keyframe</label><input id="sdKeyIter" type="number" inputmode="decimal" min="1" max="50" step="1" data-bind="seedance.keyIter"></div>
-        <div class="field"><label for="sdImgTier">Seedream tier</label><select id="sdImgTier" data-bind="seedance.imgTier" data-type="string"></select></div>
-      </div>
-      <details class="subdetails">
-        <summary>Edit per-image prices (USD)</summary>
-        <div class="grid-3">
-          <div class="field"><label for="sdPriceDraft">Draft</label><input id="sdPriceDraft" type="number" inputmode="decimal" min="0" step="0.005" data-bind="seedance.price.draft"></div>
-          <div class="field"><label for="sdPricePro">Pro</label><input id="sdPricePro" type="number" inputmode="decimal" min="0" step="0.005" data-bind="seedance.price.pro"></div>
-          <div class="field"><label for="sdPriceUltra">Ultra 4K</label><input id="sdPriceUltra" type="number" inputmode="decimal" min="0" step="0.005" data-bind="seedance.price.ultra"></div>
+      <details class="card">
+        <summary>Formula cheat sheet</summary>
+        <div class="notes" style="margin-top:12px">
+          <p>Use block variable names: <code>scenes * takes * shotLen</code>. Operators: <code>+ − * / ^ %</code> and parentheses.</p>
+          <p>Percent: <code>x%</code> means x ÷ 100 — so a 15% uplift is <code>cost * (1 + 15%)</code>.</p>
+          <p>Conditionals: <code>if(total &gt; 300, 1, 0)</code>, <code>a &gt;= b</code>, <code>a &amp;&amp; b</code>, <code>a || b</code>, <code>c ? x : y</code>.</p>
+          <p>Functions: <code>min max round(x, d) ceil floor abs sqrt pow clamp(x, lo, hi)</code>.</p>
         </div>
       </details>
     </section>
 
-    <section class="card" aria-labelledby="sdRefTitle">
-      <h2 id="sdRefTitle" class="card__title">Reference clip billing</h2>
-      <label class="check"><input id="sdUseRef" type="checkbox" data-bind="seedance.useRef" data-type="bool"><span>Use a reference clip on every generation (draft &amp; hero)</span></label>
-      <div class="grid-2">
-        <div class="field"><label for="sdRefLen">Reference clip length (s)</label><input id="sdRefLen" type="number" inputmode="decimal" min="0" max="60" step="0.5" data-bind="seedance.refLen"></div>
-        <div class="field"><label for="sdClipLen">Average generated clip length (s)</label><input id="sdClipLen" type="number" inputmode="decimal" min="1" max="30" step="0.5" data-bind="seedance.clipLen"></div>
+    <!-- ===== 2. Seedance cost & iteration calculator ===== -->
+    <section class="panel" id="tab-cost" role="tabpanel" aria-labelledby="tabbtn-cost" tabindex="-1" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Module 2 · Seedance Cost &amp; Iteration</span>
+        <h1>Forecast spend before you render</h1>
+        <p class="lede">Split your pipeline into cheap drafting, expensive hero shots and Seedream keyframes. See how much of your budget becomes the final cut — and how much is iteration waste.</p>
       </div>
-      <p class="hint">Billing: <code>with-reference rate &times; (output seconds + reference clip seconds)</code> per generation. Seedance 2.5 has no published reference rate in this tool, so it bills at its standard rate.</p>
-    </section>
-  </section>
 
-  <!-- ============ 3. COMPLIANCE VALIDATOR ============ -->
-  <section id="panel-compliance" class="panel" role="tabpanel" aria-labelledby="tab-compliance" tabindex="-1" hidden>
-    <div class="panel__head">
-      <h1 class="panel__title">70% Compliance &amp; Timeline Validator</h1>
-      <p class="panel__sub">Check your cut against the AI Film Award rules in real time: 5&ndash;7 minutes, at least 70% Seedance, 16:9 1080p, EN subtitles and an official theme.</p>
-      <p class="chip chip--warn" id="cpDeadline" role="note"></p>
+      <div class="split" id="costPanel">
+        <div class="card" id="costControls">
+          <fieldset>
+            <legend>Film</legend>
+            <div class="field">
+              <div class="field-line"><span>Final runtime</span><output data-out="cost.runtime" data-fmt="secs"></output></div>
+              <input type="range" min="60" max="420" step="5" data-bind="cost.runtime" aria-label="Final runtime in seconds">
+            </div>
+            <div class="field">
+              <div class="field-line"><span>Average shot length</span><output data-out="cost.shot" data-fmt="secs"></output></div>
+              <input type="range" min="3" max="20" step="1" data-bind="cost.shot" aria-label="Average shot length in seconds">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Phase 1 · Drafting</legend>
+            <div class="grid-2">
+              <div class="field"><label for="costDraftModel"><span>Model</span></label><select id="costDraftModel" data-bind="cost.draftModel"></select></div>
+              <div class="field"><label for="costDraftRes"><span>Resolution</span></label><select id="costDraftRes" data-bind="cost.draftRes"></select></div>
+            </div>
+            <div class="field">
+              <div class="field-line"><span>Draft takes per shot (iteration multiplier)</span><output data-out="cost.draftTakes" data-fmt="x"></output></div>
+              <input type="range" min="0" max="15" step="1" data-bind="cost.draftTakes" aria-label="Draft takes per shot">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Phase 2 · Hero shots</legend>
+            <div class="grid-2">
+              <div class="field"><label for="costHeroModel"><span>Model</span></label><select id="costHeroModel" data-bind="cost.heroModel"></select></div>
+              <div class="field"><label for="costHeroRes"><span>Resolution</span></label><select id="costHeroRes" data-bind="cost.heroRes"></select></div>
+            </div>
+            <div class="field">
+              <div class="field-line"><span>Hero takes per shot (1 = keep first)</span><output data-out="cost.heroTakes" data-fmt="x"></output></div>
+              <input type="range" min="1" max="8" step="1" data-bind="cost.heroTakes" aria-label="Hero takes per shot">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Phase 3 · Seedream keyframes</legend>
+            <div class="field"><label for="costSdTier"><span>Seedream tier</span></label><select id="costSdTier" data-bind="cost.sdTier"></select></div>
+            <div class="field">
+              <div class="field-line"><span>Keyframes per shot</span><output data-out="cost.keyPerShot" data-fmt="int"></output></div>
+              <input type="range" min="0" max="8" step="1" data-bind="cost.keyPerShot" aria-label="Keyframes per shot">
+            </div>
+            <div class="field">
+              <div class="field-line"><span>Extra storyboard &amp; character-sheet images</span><output data-out="cost.extraImgs" data-fmt="int"></output></div>
+              <input type="range" min="0" max="300" step="5" data-bind="cost.extraImgs" aria-label="Extra images">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Reference clip</legend>
+            <label class="check"><input type="checkbox" data-bind="cost.refOn"> Use a reference clip</label>
+            <div class="field">
+              <div class="field-line"><span>Reference clip length</span><output data-out="cost.refLen" data-fmt="secs"></output></div>
+              <input type="range" min="1" max="30" step="1" data-bind="cost.refLen" aria-label="Reference clip length in seconds">
+            </div>
+            <div class="grid-2">
+              <label class="check"><input type="checkbox" data-bind="cost.refDraft"> Apply to drafts</label>
+              <label class="check"><input type="checkbox" data-bind="cost.refHero"> Apply to hero shots</label>
+            </div>
+            <p class="small-text muted">Billing: reference-clip rate × (generated seconds + reference clip seconds).</p>
+          </fieldset>
+
+          <details>
+            <summary>Seedream per-image prices (editable)</summary>
+            <div class="grid-3" style="margin-top:12px">
+              <div class="field"><label for="sdDraft"><span>Draft $/img</span></label><input id="sdDraft" type="number" inputmode="decimal" min="0" step="0.005" data-bind="cost.sdPrices.draft"></div>
+              <div class="field"><label for="sdPro"><span>Pro $/img</span></label><input id="sdPro" type="number" inputmode="decimal" min="0" step="0.005" data-bind="cost.sdPrices.pro"></div>
+              <div class="field"><label for="sdUltra"><span>Ultra 4K $/img</span></label><input id="sdUltra" type="number" inputmode="decimal" min="0" step="0.005" data-bind="cost.sdPrices.ultra"></div>
+            </div>
+          </details>
+          <button type="button" class="btn" id="costReset">Reset to defaults</button>
+        </div>
+
+        <div class="results" id="costResults" aria-live="polite">
+          <div class="skeleton" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. Compliance validator ===== -->
+    <section class="panel" id="tab-compliance" role="tabpanel" aria-labelledby="tabbtn-compliance" tabindex="-1" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Module 3 · 70% Compliance &amp; Timeline</span>
+        <h1>Is your cut submission-ready?</h1>
+        <p class="lede">Drag the sliders to lay out your film. The validator checks the 5–7 minute runtime window, the 70% Seedance rule, delivery format, English subtitles and theme selection in real time.</p>
+      </div>
+
+      <div class="split even" id="compPanel">
+        <div class="grid-gap" style="display:grid;gap:16px;min-width:0">
+          <section class="card" aria-labelledby="tlH">
+            <h2 id="tlH">Timeline · 0:00 – 7:00</h2>
+            <div class="timeline">
+              <div class="tl-track" id="tlTrack" role="img" aria-label="Timeline"></div>
+              <div class="tl-zone" id="tlZone" aria-hidden="true"></div>
+              <div class="tl-ticks" id="tlTicks" aria-hidden="true"></div>
+            </div>
+            <ul class="legend" id="tlLegend"></ul>
+
+            <div class="field">
+              <div class="field-line"><span>Seedance primary footage</span><output data-out="comp.seedance" data-fmt="secs"></output></div>
+              <div class="num-pair"><input type="range" min="0" max="420" step="1" data-bind="comp.seedance" aria-label="Seedance footage in seconds"><input type="number" inputmode="numeric" min="0" max="420" data-bind="comp.seedance" aria-label="Seedance footage seconds, numeric"></div>
+            </div>
+            <div class="field">
+              <div class="field-line"><span>Other AI tools / B-roll / VFX</span><output data-out="comp.other" data-fmt="secs"></output></div>
+              <div class="num-pair"><input type="range" min="0" max="300" step="1" data-bind="comp.other" aria-label="Other AI footage in seconds"><input type="number" inputmode="numeric" min="0" max="300" data-bind="comp.other" aria-label="Other footage seconds, numeric"></div>
+            </div>
+            <div class="field">
+              <div class="field-line"><span>Title cards &amp; end credits</span><output data-out="comp.titles" data-fmt="secs"></output></div>
+              <div class="num-pair"><input type="range" min="0" max="120" step="1" data-bind="comp.titles" aria-label="Title cards and credits in seconds"><input type="number" inputmode="numeric" min="0" max="120" data-bind="comp.titles" aria-label="Title and credits seconds, numeric"></div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn small" id="compBalanced">Example: 6:00 at 75%</button>
+              <button type="button" class="btn small" id="compFix">Auto-fix to 70%</button>
+            </div>
+          </section>
+
+          <section class="card" aria-labelledby="fmtH">
+            <h2 id="fmtH">Delivery details</h2>
+            <div class="grid-2">
+              <div class="field"><label for="compAspect"><span>Aspect ratio</span></label>
+                <select id="compAspect" data-bind="comp.aspect"><option value="16:9">16:9 (horizontal)</option><option value="9:16">9:16 (vertical)</option><option value="1:1">1:1 (square)</option><option value="4:3">4:3</option><option value="21:9">21:9</option></select></div>
+              <div class="field"><label for="compRes"><span>Resolution</span></label>
+                <select id="compRes" data-bind="comp.res"><option value="720p">720p</option><option value="1080p">1080p</option><option value="1440p">1440p</option><option value="4k">4K</option></select></div>
+              <div class="field"><label for="compContainer"><span>File format</span></label>
+                <select id="compContainer" data-bind="comp.container"><option value="mp4">.MP4</option><option value="mov">.MOV</option><option value="avi">.AVI</option><option value="mkv">.MKV</option><option value="webm">.WEBM</option></select></div>
+              <div class="field"><label for="compSubs"><span>English subtitles</span></label>
+                <select id="compSubs" data-bind="comp.subs"><option value="none">Not ready</option><option value="srt">Ready — SRT sidecar</option><option value="burned">Ready — burned-in</option><option value="both">Ready — both</option></select></div>
+              <div class="field" style="grid-column:1/-1"><label for="compTheme"><span>Official theme</span></label>
+                <select id="compTheme" data-bind="comp.theme"></select></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="results" aria-live="polite">
+          <div id="compVerdict"></div>
+          <section class="card" aria-labelledby="pctH">
+            <h2 id="pctH">Seedance share</h2>
+            <div style="padding-bottom:22px"><div class="pct-bar" id="pctBar"></div></div>
+            <div id="pctText" class="notes" style="padding-left:0;list-style:none"></div>
+          </section>
+          <section class="card" aria-labelledby="clH">
+            <h2 id="clH">Compliance checklist</h2>
+            <ul class="check-list" id="compChecklist"></ul>
+          </section>
+          <section class="card" aria-labelledby="rmH">
+            <h2 id="rmH">Award roadmap</h2>
+            <div><div class="countdown" id="countdown"></div><p class="muted small-text" id="countdownSub"></p></div>
+            <ol class="roadmap" id="roadmap"></ol>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. Glossary ===== -->
+    <section class="panel" id="tab-glossary" role="tabpanel" aria-labelledby="tabbtn-glossary" tabindex="-1" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Module 4 · Definition of Terms</span>
+        <h1>Interactive glossary</h1>
+        <p class="lede">Competition rules, Seedance and AI-video concepts, agent pipelines, post-production and PWA tech — in plain language.</p>
+      </div>
+      <div class="card">
+        <div class="field">
+          <label for="glossSearch"><span>Search terms</span></label>
+          <input id="glossSearch" type="search" placeholder="e.g. reference clip, subtitles, manifest" autocomplete="off" enterkeyhint="search">
+        </div>
+        <div class="chips" id="glossChips" role="group" aria-label="Filter by category"></div>
+        <p class="muted small-text" id="glossCount" role="status" aria-live="polite"></p>
+      </div>
+      <div class="terms" id="glossList"></div>
+    </section>
+
+    <!-- ===== 5. Assets ===== -->
+    <section class="panel" id="tab-assets" role="tabpanel" aria-labelledby="tabbtn-assets" tabindex="-1" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Module 5 · PWA Asset &amp; PNG Icon Pack</span>
+        <h1>Export your PNG icon pack</h1>
+        <p class="lede">Browsers need raster PNGs for full installability and for Open Graph link previews. This tool renders every required size from the SVG templates using an HTML5 canvas — entirely on your device.</p>
+      </div>
+      <section class="card">
+        <div class="btn-row">
+          <button type="button" class="btn primary" id="assetGen">Generate all 14 PNGs</button>
+          <button type="button" class="btn" id="assetZip" disabled>Download ZIP</button>
+        </div>
+        <div class="progress" aria-hidden="true"><i id="assetProg"></i></div>
+        <p class="muted small-text" id="assetStatus" role="status" aria-live="polite">Ready. Click “Generate” to render the icon pack.</p>
+        <div class="asset-grid" id="assetGrid"></div>
+      </section>
+      <section class="card">
+        <h2>Where each file goes</h2>
+        <ol class="steps">
+          <li><b>Generate</b>, then <b>Download ZIP</b>. It already contains the correct folder layout (<code>icons/…</code> plus <code>apple-touch-icon.png</code> at the root).</li>
+          <li>Unzip over your project folder so <code>icons/og-image.png</code>, <code>icons/icon-512.png</code> and the others sit next to their SVG sources.</li>
+          <li>If your hosting domain differs, prefix <code>og:image</code>, <code>og:url</code> and <code>twitter:image</code> in <code>index.html</code> with your absolute HTTPS URL — social crawlers require absolute URLs.</li>
+          <li>Bump <code>CACHE_NAME</code> in <code>sw.js</code> after adding the PNGs so installed copies cache them.</li>
+        </ol>
+      </section>
+    </section>
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-lockup">
+        <svg class="lk-emblem" viewBox="0 0 64 64" role="img" aria-label="1B emblem"><use href="#logo-1b"/></svg>
+        <svg viewBox="0 0 190 28" width="150" height="22" role="img" aria-label="AI Film Award"><use href="#logo-award"/></svg>
+        <span class="by">By 1 Billion Summit &amp; BytePlus | Seedance</span>
+        <svg class="lk-tiktok" viewBox="0 0 76 26" role="img" aria-label="TikTok" style="color:var(--text)"><use href="#logo-tiktok"/></svg>
+      </div>
+      <div class="partner-strip" id="footerPartners" aria-label="Strategic partners"></div>
+      <p class="footer-note">1 Billion Followers Summit 2027 · Dubai, UAE · 8–10 January 2027. This is an independent planning tool, not an official submission portal. Rules and prices are configured from the published AI Film Award details — always confirm the latest rules at <a href="https://www.1billionsummit.com/ai-award-2027" target="_blank" rel="noopener noreferrer">1billionsummit.com/ai-award-2027</a> and current BytePlus pricing before you commit budget. Partner marks are shown as simple tinted badges for identification only.</p>
     </div>
+  </footer>
+</div>
 
-    <section class="card results" aria-labelledby="cpTlTitle">
-      <h2 id="cpTlTitle" class="card__title">Timeline</h2>
-      <div class="stat-row">
-        <div class="stat"><span class="stat__label">Total runtime</span><span class="stat__value stat__value--lg" id="cpTotal">0:00</span></div>
-        <div class="stat"><span class="stat__label">Seedance share</span><span class="stat__value stat__value--lg" id="cpPct">0.0%</span></div>
-      </div>
-      <div class="timeline" aria-hidden="true">
-        <div id="cpBar" class="timeline__bar"></div>
-        <div id="cpMarks" class="timeline__marks"></div>
-        <div id="cpTicks" class="timeline__ticks"></div>
-      </div>
-      <ul class="legend">
-        <li><span class="swatch swatch--seedance"></span>Seedance <b id="cpLegS">0:00</b></li>
-        <li><span class="swatch swatch--other"></span>Other AI / B-roll / VFX <b id="cpLegO">0:00</b></li>
-        <li><span class="swatch swatch--titles"></span>Titles &amp; credits <b id="cpLegT">0:00</b></li>
-      </ul>
-    </section>
+<!-- ========== Install banner ========== -->
+<div class="banner" id="installBar" role="region" aria-label="Install app" hidden>
+  <p><strong>Install the calculator</strong> for instant, offline access from your home screen.</p>
+  <button type="button" class="btn primary small" id="installYes">Install</button>
+  <button type="button" class="btn ghost small" id="installNo">Not now</button>
+</div>
 
-    <section class="card" aria-labelledby="cpInTitle">
-      <h2 id="cpInTitle" class="card__title">Your cut</h2>
-      <div class="slider-field">
-        <label for="cpSeedance">Seedance primary footage</label>
-        <div class="slider-field__row"><input id="cpSeedance" type="range" min="0" max="420" step="1" data-bind="compliance.seedance"><input id="cpSeedanceNum" class="slider-field__num" type="number" inputmode="numeric" min="0" max="900" step="1" data-bind="compliance.seedance" aria-label="Seedance seconds"><span class="unit">s</span></div>
-      </div>
-      <div class="slider-field">
-        <label for="cpOther">Other AI tools / B-roll / VFX</label>
-        <div class="slider-field__row"><input id="cpOther" type="range" min="0" max="420" step="1" data-bind="compliance.other"><input id="cpOtherNum" class="slider-field__num" type="number" inputmode="numeric" min="0" max="900" step="1" data-bind="compliance.other" aria-label="Other tools seconds"><span class="unit">s</span></div>
-      </div>
-      <div class="slider-field">
-        <label for="cpTitles">Title cards &amp; end credits</label>
-        <div class="slider-field__row"><input id="cpTitles" type="range" min="0" max="420" step="1" data-bind="compliance.titles"><input id="cpTitlesNum" class="slider-field__num" type="number" inputmode="numeric" min="0" max="900" step="1" data-bind="compliance.titles" aria-label="Titles seconds"><span class="unit">s</span></div>
-      </div>
-      <label class="check"><input id="cpFormat" type="checkbox" data-bind="compliance.format" data-type="bool"><span>Export is 16:9 horizontal, at least 1080p, as .MP4 or .MOV</span></label>
-      <label class="check"><input id="cpSubs" type="checkbox" data-bind="compliance.subs" data-type="bool"><span>English (EN) subtitles are ready</span></label>
-      <div class="field">
-        <label for="cpTheme">Official theme</label>
-        <select id="cpTheme" data-bind="compliance.theme" data-type="string">
-          <option value="">Select a theme…</option>
-          <option value="01">01 · Society, Community &amp; Humanitarian Issues</option>
-          <option value="02">02 · Truth, Fake News &amp; Misinformation</option>
-          <option value="03">03 · Humans &amp; AI</option>
-          <option value="04">04 · Climate, Nature &amp; Our Changing Planet</option>
-          <option value="05">05 · Human Relationships</option>
-        </select>
-      </div>
-    </section>
+<div class="toast-region" id="toasts" role="status" aria-live="polite"></div>
 
-    <section class="card" aria-labelledby="cpChkTitle">
-      <h2 id="cpChkTitle" class="card__title">Compliance checklist</h2>
-      <p id="cpSummary" class="summary" role="status" aria-live="polite"></p>
-      <ul id="cpChecklist" class="checklist"></ul>
-      <p id="cpHelper" class="hint"></p>
-    </section>
-
-    <section class="card" aria-labelledby="cpRoadTitle">
-      <h2 id="cpRoadTitle" class="card__title">Award roadmap</h2>
-      <ol class="roadmap">
-        <li><b>Submissions open</b></li>
-        <li><b>Submission deadline</b> &middot; 20 November 2026</li>
-        <li><b>Top 50 &amp; public voting</b></li>
-        <li><b>Top 5 announcement</b></li>
-        <li><b>Premiere &amp; $1M Grand Prize</b> &middot; Dubai, 8&ndash;10 January 2027</li>
-      </ol>
-    </section>
-  </section>
-
-  <!-- ============ 4. GLOSSARY ============ -->
-  <section id="panel-glossary" class="panel" role="tabpanel" aria-labelledby="tab-glossary" tabindex="-1" hidden>
-    <div class="panel__head">
-      <h1 class="panel__title">Definition of Terms</h1>
-      <p class="panel__sub">Competition rules, Seedance and AI-video vocabulary, agent tooling, post-production and PWA terms &mdash; searchable and filterable.</p>
+<!-- ========== Dialogs ========== -->
+<dialog id="partnersDlg" class="drawer" aria-labelledby="partnersTitle">
+  <div class="dlg">
+    <div class="dlg-head">
+      <h2 id="partnersTitle">Strategic partners</h2>
+      <button type="button" class="btn icon-btn" data-close aria-label="Close partners"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
     </div>
-    <section class="card">
-      <div class="field">
-        <label for="glSearch">Search terms</label>
-        <input id="glSearch" type="search" autocomplete="off" placeholder="e.g. reference clip, subtitles, manifest">
-      </div>
-      <div id="glCats" class="chips chips--wrap" role="group" aria-label="Filter by category"></div>
-      <p id="glCount" class="hint" role="status" aria-live="polite"></p>
-    </section>
-    <div id="glList" class="gl-list"></div>
-  </section>
-
-  <!-- ============ 5. ASSET GENERATOR ============ -->
-  <section id="panel-assets" class="panel" role="tabpanel" aria-labelledby="tab-assets" tabindex="-1" hidden>
-    <div class="panel__head">
-      <h1 class="panel__title">PWA Asset &amp; PNG Icon Pack</h1>
-      <p class="panel__sub">Browsers need real PNGs for installability and social previews. Render all 14 files from the SVG templates with an HTML5 canvas, then download them one by one or as a single ZIP that already has the right folder layout.</p>
+    <div class="footer-lockup">
+      <svg class="lk-emblem" viewBox="0 0 64 64" role="img" aria-label="1B emblem"><use href="#logo-1b"/></svg>
+      <svg viewBox="0 0 190 28" width="150" height="22" role="img" aria-label="AI Film Award"><use href="#logo-award"/></svg>
     </div>
-    <section class="card">
-      <div class="btn-row">
-        <button type="button" class="btn btn--primary" id="genAssetsBtn">Generate PNG pack</button>
-        <button type="button" class="btn" id="zipAssetsBtn" disabled><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span>Download all (.zip)</span></button>
+    <div class="partner-group"><h3>Presented with</h3>
+      <div class="partner-strip">
+        <svg viewBox="0 0 176 32" width="176" height="32" role="img" aria-label="BytePlus Seedance" style="color:var(--text)"><use href="#logo-byteplus"/></svg>
+        <svg viewBox="0 0 76 26" width="76" height="26" role="img" aria-label="TikTok" style="color:var(--text)"><use href="#logo-tiktok"/></svg>
       </div>
-      <p id="assetStatus" class="hint" role="status" aria-live="polite">Nothing generated yet.</p>
-      <div id="assetGrid" class="asset-grid"></div>
-    </section>
-    <section class="card">
-      <h2 class="card__title">Where the files go</h2>
-      <ul class="notes">
-        <li><code>icons/og-image.png</code> and <code>icons/icon-*.png</code>, <code>icons/icon-maskable-*.png</code>, <code>icons/favicon-*.png</code> &rarr; the <code>icons/</code> folder.</li>
-        <li><code>apple-touch-icon.png</code> &rarr; the site root, next to <code>index.html</code>.</li>
-        <li>The ZIP preserves these paths. Unzip it over your project folder and redeploy.</li>
-      </ul>
-    </section>
-  </section>
-</main>
-
-<!-- ===================== FOOTER ===================== -->
-<footer class="app-footer" role="contentinfo">
-  <div class="app-footer__inner">
-    <div class="lockup lockup--footer">
-      <svg class="lockup__emblem" viewBox="0 0 48 48" role="img" aria-label="1 Billion Followers Summit emblem"><use href="#logo-1b"/></svg>
-      <span class="lockup__text">
-        <svg class="lockup__award" viewBox="0 0 180 40" role="img" aria-label="AI Film Award 2027"><use href="#logo-ai-film-award"/></svg>
-        <span class="lockup__by">By 1 Billion Summit &amp; BytePlus | Seedance</span>
-      </span>
-      <svg class="lockup__tiktok" viewBox="0 0 120 40" role="img" aria-label="TikTok"><use href="#logo-tiktok"/></svg>
     </div>
-
-    <details class="partners">
-      <summary>Strategic partners</summary>
-      <h2 class="partners__title">Digital partners</h2>
-      <ul class="badge-list">
-        <li style="color:#25F4EE"><svg viewBox="0 0 168 40" role="img" aria-label="TikTok"><use href="#p-tiktok"/></svg></li>
-        <li style="color:#4C8DF6"><svg viewBox="0 0 168 40" role="img" aria-label="Meta"><use href="#p-meta"/></svg></li>
-        <li style="color:#FF4D4D"><svg viewBox="0 0 168 40" role="img" aria-label="YouTube"><use href="#p-youtube"/></svg></li>
-        <li style="color:#F58AC1"><svg viewBox="0 0 168 40" role="img" aria-label="Instagram"><use href="#p-instagram"/></svg></li>
-        <li style="color:#8AB4FF"><svg viewBox="0 0 168 40" role="img" aria-label="Gemini"><use href="#p-gemini"/></svg></li>
-        <li style="color:#FE2C55"><svg viewBox="0 0 168 40" role="img" aria-label="TikTok LIVE"><use href="#p-tiktok-live"/></svg></li>
-        <li style="color:#5AA7E8"><svg viewBox="0 0 168 40" role="img" aria-label="LinkedIn"><use href="#p-linkedin"/></svg></li>
-        <li style="color:#4FC3F7"><svg viewBox="0 0 168 40" role="img" aria-label="Bilibili"><use href="#p-bilibili"/></svg></li>
-        <li style="color:#FFE14D"><svg viewBox="0 0 168 40" role="img" aria-label="Snapchat"><use href="#p-snapchat"/></svg></li>
-        <li style="color:#00E676"><svg viewBox="0 0 168 40" role="img" aria-label="BytePlus Seedance"><use href="#p-byteplus-seedance"/></svg></li>
-        <li style="color:#CBD5E1"><svg viewBox="0 0 168 40" role="img" aria-label="X"><use href="#p-x"/></svg></li>
-      </ul>
-      <h2 class="partners__title">Dubai strategic sponsors</h2>
-      <ul class="badge-list">
-        <li style="color:#FF6B6B"><svg viewBox="0 0 168 40" role="img" aria-label="Emirates"><use href="#p-emirates"/></svg></li>
-        <li style="color:#00D2FF"><svg viewBox="0 0 168 40" role="img" aria-label="Dubai Chamber Digital"><use href="#p-dubai-chamber-digital"/></svg></li>
-        <li style="color:#E3C26B"><svg viewBox="0 0 168 40" role="img" aria-label="DIFC"><use href="#p-difc"/></svg></li>
-        <li style="color:#FF5A5F"><svg viewBox="0 0 168 40" role="img" aria-label="e&amp;"><use href="#p-e-and"/></svg></li>
-        <li style="color:#7DD3A8"><svg viewBox="0 0 168 40" role="img" aria-label="Dubai Silicon Oasis"><use href="#p-dubai-silicon-oasis"/></svg></li>
-        <li style="color:#C4B5FD"><svg viewBox="0 0 168 40" role="img" aria-label="Museum of the Future"><use href="#p-museum-of-the-future"/></svg></li>
-        <li style="color:#F59E0B"><svg viewBox="0 0 168 40" role="img" aria-label="RTA"><use href="#p-rta"/></svg></li>
-      </ul>
-      <p class="hint">Stylised wordmark badges for layout only. Replace with official brand assets, used under each partner's guidelines, before any public launch.</p>
-    </details>
-
-    <p class="fineprint">
-      Unofficial planning tool. Not affiliated with or endorsed by the 1 Billion Followers Summit, BytePlus or TikTok. Prices and rules are a snapshot, so always confirm against the
-      <a href="https://www.1billionsummit.com/ai-award-2027" target="_blank" rel="noopener noreferrer">official AI Film Award page</a> and the BytePlus pricing page. Submission deadline: 20 November 2026.
-    </p>
+    <div class="partner-group"><h3>Digital partners</h3><div class="partner-grid" id="digitalPartners"></div></div>
+    <div class="partner-group"><h3>Dubai strategic sponsors</h3><div class="partner-grid" id="dubaiPartners"></div></div>
+    <p class="muted small-text">#1MillionStories — companion track with TikTok ($100,000 prize).</p>
   </div>
-</footer>
-
-<!-- ===================== iOS INSTALL DIALOG ===================== -->
-<dialog id="iosDialog" class="dialog" aria-labelledby="iosTitle">
-  <form method="dialog">
-    <h2 id="iosTitle">Install on iPhone or iPad</h2>
-    <ol class="steps">
-      <li>Open this page in <strong>Safari</strong>.</li>
-      <li>Tap the <strong>Share</strong> button <svg class="icon icon--inline" aria-hidden="true"><use href="#i-share"/></svg> in the toolbar.</li>
-      <li>Scroll and choose <strong>Add to Home Screen</strong>.</li>
-      <li>Tap <strong>Add</strong>. The app opens full-screen and works offline.</li>
-    </ol>
-    <button class="btn btn--primary" value="close">Got it</button>
-  </form>
 </dialog>
 
-<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="iosDlg" aria-labelledby="iosTitle">
+  <div class="dlg">
+    <div class="dlg-head">
+      <h2 id="iosTitle">Install on iPhone / iPad</h2>
+      <button type="button" class="btn icon-btn" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+    <ol class="steps">
+      <li>Open this page in <b>Safari</b>.</li>
+      <li>Tap the <b>Share</b> button <svg class="icon" aria-hidden="true" style="display:inline;vertical-align:-5px"><use href="#i-share"/></svg> in the toolbar.</li>
+      <li>Scroll and choose <b>Add to Home Screen</b>.</li>
+      <li>Tap <b>Add</b>. The calculator opens full-screen and works offline.</li>
+    </ol>
+    <button type="button" class="btn primary" data-close>Got it</button>
+  </div>
+</dialog>
 
-<script>
-/* Service worker registration + update notification */
-(function () {
-  if (!('serviceWorker' in navigator)) return;
-  var banner = document.getElementById('updateBanner');
-  var btn = document.getElementById('updateBtn');
-  var later = document.getElementById('updateDismiss');
-  var waiting = null;
-  var userRequested = false;
-
-  function showUpdate(worker) { waiting = worker; banner.hidden = false; }
-
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').then(function (reg) {
-      if (reg.waiting && navigator.serviceWorker.controller) showUpdate(reg.waiting);
-      reg.addEventListener('updatefound', function () {
-        var nw = reg.installing;
-        if (!nw) return;
-        nw.addEventListener('statechange', function () {
-          if (nw.state === 'installed' && navigator.serviceWorker.controller) showUpdate(nw);
-        });
-      });
-      setInterval(function () { reg.update().catch(function () {}); }, 60 * 60 * 1000);
-    }).catch(function (err) { console.warn('Service worker registration failed:', err); });
-  });
-
-  btn.addEventListener('click', function () {
-    userRequested = true;
-    if (waiting) waiting.postMessage({ type: 'SKIP_WAITING' });
-    else location.reload();
-  });
-  later.addEventListener('click', function () { banner.hidden = true; });
-
-  navigator.serviceWorker.addEventListener('controllerchange', function () {
-    if (userRequested) location.reload();
-  });
-})();
-</script>
-<script src="js/app.js" defer></script>
+<script src="js/app.js"></script>
 </body>
 </html>

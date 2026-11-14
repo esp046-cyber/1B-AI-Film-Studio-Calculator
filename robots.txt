@@ -1,2 +1,3 @@
+# 1B AI Film Studio Calculator — static PWA, everything is public.
 User-agent: *
 Allow: /

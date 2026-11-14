@@ -1,45 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0D0F12">
   <title>Offline — 1B AI Film Studio Calculator</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
-    :root { color-scheme: dark; }
+    :root { color-scheme: dark light; }
     * { box-sizing: border-box; }
     body {
-      margin: 0; min-height: 100vh; min-height: 100dvh;
-      display: flex; align-items: center; justify-content: center;
-      padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
-      background: #0D0F12; color: #F8FAFC;
-      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      margin: 0; min-height: 100vh; min-height: 100dvh; display: grid; place-items: center;
+      padding: max(24px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      background: radial-gradient(900px 500px at 80% -10%, rgba(0,230,118,.14), transparent 60%), radial-gradient(700px 500px at 0% 110%, rgba(0,210,255,.12), transparent 60%), #0D0F12;
+      color: #F8FAFC; font: 400 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
-    main {
-      max-width: 440px; width: 100%; text-align: center;
-      background: #161A20; border: 1px solid #263040; border-radius: 20px; padding: 32px 24px;
+    main { max-width: 440px; text-align: center; background: #161A20; border: 1px solid #2A313B; border-radius: 20px; padding: 32px 24px; }
+    .logo { width: 72px; height: 72px; margin: 0 auto 16px; display: block; }
+    h1 { margin: 0 0 8px; font-size: 1.5rem; line-height: 1.25; }
+    p { margin: 0 0 16px; color: #A6B0BE; }
+    .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    a, button {
+      min-height: 44px; min-width: 44px; padding: 10px 18px; border-radius: 12px; font: 700 16px/1.2 inherit; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
     }
-    .mark { width: 72px; height: 72px; margin: 0 auto 16px; }
-    h1 { font-size: 1.5rem; margin: 0 0 8px; }
-    p { color: #AEB9C7; margin: 0 0 24px; }
-    button {
-      min-height: 44px; min-width: 44px; padding: 0 24px; border: 0; border-radius: 12px;
-      background: #00E676; color: #04210F; font: 700 1rem system-ui, sans-serif; cursor: pointer;
-    }
-    button:focus-visible { outline: 3px solid #00D2FF; outline-offset: 3px; }
+    button { background: #00E676; color: #04140A; border: 0; }
+    a { background: transparent; color: #F8FAFC; border: 1px solid #3A4350; }
+    :focus-visible { outline: 3px solid #00D2FF; outline-offset: 2px; }
   </style>
 </head>
 <body>
   <main role="main">
-    <svg class="mark" viewBox="0 0 72 72" aria-hidden="true">
-      <rect width="72" height="72" rx="16" fill="#161A20" stroke="#00E676" stroke-width="2"/>
-      <path d="M12 52 L28 22 L38 40 L46 28 L60 52 Z" fill="none" stroke="#00D2FF" stroke-width="3" stroke-linejoin="round"/>
-      <text x="36" y="62" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#00E676" text-anchor="middle">1B</text>
-    </svg>
+    <img class="logo" src="favicon.svg" alt="1B emblem" width="72" height="72">
     <h1>You're offline</h1>
-    <p>This page isn't cached yet. Reconnect, or reopen the calculator &mdash; once it has loaded online one time, all five tools work without a connection.</p>
-    <button type="button" onclick="location.href='index.html'">Open calculator</button>
+    <p>This page isn't saved on your device yet. Reconnect once to let the calculator cache itself — after that it works fully offline, and your saved calculators stay on this device.</p>
+    <div class="row">
+      <button type="button" id="retry">Try again</button>
+      <a href="./index.html">Open calculator</a>
+    </div>
   </main>
+  <script>
+    document.getElementById('retry').addEventListener('click', function () { location.reload(); });
+    window.addEventListener('online', function () { location.reload(); });
+  </script>
 </body>
 </html>
