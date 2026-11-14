@@ -146,19 +146,18 @@ The interface is crafted around a **Cyber-Cinema Dark Mode** aesthetic, minimizi
 
 ```text
 +-----------------------------------------------------------------------------------+
-|  [🎬 1B AI FILM STUDIO CALCULATOR]           [⚡ PWA: READY] [🏆 SUMMIT 2027 MODE] |
+|  [ 1B AI FILM STUDIO CALCULATOR ]            [ PWA: READY ] [ SUMMIT 2027 MODE ]  |
 +---------------------------------------+-------------------------------------------+
-|  🎛️ INPUT PARAMETERS (3D / 4D)        |  📊 REAL-TIME TELEMETRY (5D / 6D)         |
+|  :: INPUT PARAMETERS (3D / 4D)        |  :: REAL-TIME TELEMETRY (5D / 6D)         |
 |  -----------------------------------  |  ---------------------------------------  |
-|  • Target Film Duration : [ 08:00 ]   |  💰 Estimated Total Budget : $14,850.00   |
-|  • Resolution & Spatial : [ 4K 3D ]   |  🪙 Generative API Credits : 185,400      |
-|  • Prompt Roll Ratio    : [ 12 : 1 ]  |  🤖 AI Agent Token Burn    : 42.5M Tok    |
-|  • Video Diffusion Tier : [ Ultra ]   |  ⏳ Est. Render & Edit Time: 164 Hours    |
-|  • Agent Orchestration  : [ Active ]  |  🛡️ 1B Summit Compliance   : 100% PASS    |
+|  * Target Film Duration : [ 08:00 ]   |  > Estimated Total Budget : $14,850.00    |
+|  * Resolution & Spatial : [ 4K 3D ]   |  > Generative API Credits : 185,400       |
+|  * Prompt Roll Ratio    : [ 12 : 1 ]  |  > AI Agent Token Burn    : 42.5M Tok     |
+|  * Video Diffusion Tier : [ Ultra ]   |  > Est. Render & Edit Time: 164 Hours     |
+|  * Agent Orchestration  : [ Active ]  |  > 1B Summit Compliance   : 100% PASS     |
 |                                       |                                           |
-|  [+ Add Scene] [⚙️ Model Mix]         |  [📥 Export Production Sheet] [🔄 Reset]  |
+|  [+ Add Scene] [Model Mix]            |  [Export Production Sheet] [Reset]        |
 +---------------------------------------+-------------------------------------------+
-
 ```
 
 ---
@@ -265,4 +264,3 @@ Distributed under the **MIT License**. Free to use, modify, and distribute for p
 
 **Engineered for the Future of Cinema • 1 Billion Followers Summit 2027**
 
-Would you like me to customize the GitHub username/repository URLs inside the badges or add specific default pricing presets for the video models in your `index.html`?
