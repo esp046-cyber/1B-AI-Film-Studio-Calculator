@@ -1,12 +1,4 @@
-### Key Architectural & Visual Upgrades Included
 
-* **Repository Asset Alignment**: Maps the exact Progressive Web App (PWA) file tree from your archive, including `index.html`, the `sw.js` Service Worker, `offline.html` fallback, SVG app icons (`favicon.svg`, `apple-touch-icon.svg`), and `robots.txt` crawler configuration (`User-agent: * Allow: /`).
-
-
-* **Dynamic 3D & Animated Visuals**: Uses `capsule-render` 3D waving gradients, `readme-typing-svg` live terminal headers, `skillicons.dev` iconography, and custom hex-swatch badges inspired by modern README generators.
-* **3D to 6D Studio Engineering Architecture**: Structures the calculator around spatial/visual rendering (**3D**), timeline & frame-rate scheduling (**4D**), multi-agent API tokenomics & production budgeting (**5D**), and compliance, licensing & festival governance (**6D**) for the **1 Billion Followers Summit 2027 — AI Film Award**.
-
-```markdown
 <div align="center">
 
 <!-- 3D DYNAMIC ANIMATED HEADER BANNER -->
